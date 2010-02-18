@@ -1,0 +1,32 @@
+{
+   "resources" : {
+      "repository" : "http://github.com/jquelin/perl-prereqscanner",
+      "MailingList" : "http://www.listbox.com/subscribe/?list_id=139292"
+   },
+   "meta-spec" : {
+      "version" : 1.4,
+      "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
+   },
+   "generated_by" : "Dist::Zilla version 1.100160",
+   "version" : "0.100490",
+   "name" : "Perl-PrereqScanner",
+   "author" : [
+      "Jerome Quelin"
+   ],
+   "license" : "perl",
+   "requires" : {
+      "PPI" : "0",
+      "Scalar::Util" : "0",
+      "Try::Tiny" : "0",
+      "namespace::autoclean" : "0",
+      "version" : "0",
+      "ExtUtils::MakeMaker" : "6.11",
+      "Test::More" : "0",
+      "perl" : "5.010",
+      "List::Util" : "0",
+      "File::Temp" : "0",
+      "PPI::Document" : "0"
+   },
+   "abstract" : "a tool to scan your Perl code for its prerequisites"
+}
+

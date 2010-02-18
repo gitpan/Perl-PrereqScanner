@@ -1,0 +1,26 @@
+---
+abstract: 'a tool to scan your Perl code for its prerequisites'
+author:
+  - 'Jerome Quelin'
+generated_by: 'Dist::Zilla version 1.100160'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Perl-PrereqScanner
+requires:
+  ExtUtils::MakeMaker: 6.11
+  File::Temp: 0
+  List::Util: 0
+  PPI: 0
+  PPI::Document: 0
+  Scalar::Util: 0
+  Test::More: 0
+  Try::Tiny: 0
+  namespace::autoclean: 0
+  perl: 5.010
+  version: 0
+resources:
+  MailingList: http://www.listbox.com/subscribe/?list_id=139292
+  repository: http://github.com/jquelin/perl-prereqscanner
+version: 0.100490
