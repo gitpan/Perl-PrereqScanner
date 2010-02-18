@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100490';
+our $VERSION = '0.100491';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 
@@ -120,7 +120,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100490
+version 0.100491
 
 =head1 SYNOPSIS
 
@@ -144,20 +144,19 @@ find the following prereqs:
 =over 4
 
 =item * plain lines beginning with C<use> or C<require> in your perl
-modules and scripts, including minimum perl version
+modules and scripts. This includes minimum perl version.
 
-=item * regular inheritance declared with the C<base> and C<parent>
-pragmata
+=item * regular inheritance declated with the C<base> and C<parent>
+pragamata.
 
-=item * L<Moose> inheritance declared with the C<extends> keyword
+=item * L<Moose> inheritance declared with the C<extends> keyword.
 
-=item * L<Moose> roles included with the C<with> keyword
+=item * L<Moose> roles included with the C<with> keyword.
 
 =back
 
-It will trim the following pragamata: C<strict>, C<warnings>, and C<lib>.
-C<base> is trimmed unless a specific version is required.  C<parent> is kept,
-since it's only recently become a core library.
+It will trim the following pragamata: C<strict>, C<warnings>, C<base>
+and C<lib>. However, C<parent> is kept, since it's not in a core module.
 
 =head1 METHODS
 

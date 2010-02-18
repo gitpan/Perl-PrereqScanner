@@ -23,4 +23,4 @@ requires:
 resources:
   MailingList: http://www.listbox.com/subscribe/?list_id=139292
   repository: http://github.com/jquelin/perl-prereqscanner
-version: 0.100490
+version: 0.100491
