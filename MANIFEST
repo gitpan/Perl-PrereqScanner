@@ -5,6 +5,7 @@ META.json
 META.yml
 Makefile.PL
 README
+bin/scan_prereqs
 dist.ini
 lib/Perl/PrereqScanner.pm
 t/autoprereq.t

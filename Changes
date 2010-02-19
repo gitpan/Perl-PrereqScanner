@@ -1,5 +1,9 @@
 Revision history for Perl-PrereqScanner
 
+0.100500  2010-02-19 17:11:37 Europe/Paris
+ - typo fixes (ricard signes)
+ - new script scan_prereqs
+
 0.100491  2010-02-18 19:16:15 Europe/Paris
  - added a changelog (this file)
 

@@ -10,7 +10,9 @@ meta-spec:
 name: Perl-PrereqScanner
 requires:
   ExtUtils::MakeMaker: 6.11
+  File::Spec::Functions: 0
   File::Temp: 0
+  FindBin: 0
   List::Util: 0
   PPI: 0
   PPI::Document: 0
@@ -23,4 +25,4 @@ requires:
 resources:
   MailingList: http://www.listbox.com/subscribe/?list_id=139292
   repository: http://github.com/jquelin/perl-prereqscanner
-version: 0.100491
+version: 0.100500
