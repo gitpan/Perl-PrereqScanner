@@ -3,14 +3,13 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100500';
+our $VERSION = '0.100510';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
-
 
 use PPI;
 use List::Util qw(max);
 use Scalar::Util qw(blessed);
-use version;
+use Version::Requirements;
 
 use namespace::autoclean;
 
@@ -27,22 +26,6 @@ sub new {
   my ($class) = @_;
   bless {} => $class;
 }
-
-sub _add_prereq {
-  my ($self, $prereq, $name, $newver) = @_;
-
-  $newver = version->parse($newver) unless blessed($newver);
-
-  if (defined (my $oldver = $prereq->{ $name })) {
-    if (defined $newver) {
-      $prereq->{ $name } = (sort { $b cmp $a } ($newver, $oldver))[0];
-    }
-    return;
-  }
-
-  $prereq->{ $name } = $newver;
-}
-
 
 
 sub scan_string {
@@ -64,14 +47,14 @@ sub scan_file {
 sub scan_ppi_document {
   my ($self, $ppi_doc) = @_;
 
-  my $prereq = {};
+  my $req = Version::Requirements->new;
 
   # regular use and require
   my $includes = $ppi_doc->find('Statement::Include') || [];
   for my $node ( @$includes ) {
     # minimum perl version
     if ( $node->version ) {
-      $self->_add_prereq($prereq, perl => $node->version);
+      $req->add_minimum(perl => $node->version);
       next;
     }
 
@@ -83,7 +66,7 @@ sub scan_ppi_document {
       my @meat = $node->arguments;
 
       my @parents = map { $self->_q_contents($_) } @meat;
-      $self->_add_prereq($prereq, $_ => 0) for @parents;
+      $req->add_minimum($_ => 0) for @parents;
     }
 
     # regular modules
@@ -92,7 +75,7 @@ sub scan_ppi_document {
     # base has been core since perl 5.0
     next if $node->module eq 'base' and not $version;
 
-    $self->_add_prereq($prereq, $node->module => $version);
+    $req->add_minimum($node->module, $version);
   }
 
   # Moose-based roles / inheritance
@@ -104,9 +87,9 @@ sub scan_ppi_document {
     grep { $_->child(0)->isa('PPI::Token::Word') }
     @{ $ppi_doc->find('PPI::Statement') || [] };
 
-  $self->_add_prereq($prereq, $_ => 0) for @bases;
+  $req->add_minimum($_ => 0) for @bases;
 
-  return $prereq;
+  return $req->as_string_hash;
 }
 
 1;
@@ -120,7 +103,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100500
+version 0.100510
 
 =head1 SYNOPSIS
 
@@ -129,9 +112,6 @@ version 0.100500
   my $prereqs = $scan->scan_ppi_document( $ppi_doc );
   my $prereqs = $scan->scan_file( $file_path );
   my $prereqs = $scan->scan_string( $perl_code );
-
-  # or using class methods
-  my $prereqs = Perl::PrereqScanner->scan_ppi_document( $ppi_doc );
 
 =head1 DESCRIPTION
 
@@ -143,15 +123,21 @@ find the following prereqs:
 
 =over 4
 
-=item * plain lines beginning with C<use> or C<require> in your perl
-modules and scripts, including minimum perl version
+=item *
 
-=item * regular inheritance declared with the C<base> and C<parent>
-pragmata
+plain lines beginning with C<use> or C<require> in your perl modules and scripts, including minimum perl version
 
-=item * L<Moose> inheritance declared with the C<extends> keyword
+=item *
 
-=item * L<Moose> roles included with the C<with> keyword
+regular inheritance declared with the C<base> and C<parent> pragmata
+
+=item *
+
+L<Moose> inheritance declared with the C<extends> keyword
+
+=item *
+
+L<Moose> roles included with the C<with> keyword
 
 =back
 
@@ -161,26 +147,33 @@ since it's only recently become a core library.
 
 =head1 METHODS
 
-=head2 my $prereqs = $scanner->scan_string( $perl_code );
+=head2 scan_string
+
+  my $prereqs = $scanner->scan_string( $perl_code );
 
 Return a list of prereqs with their minimum version (0 if no minimum
 specified) given a string of Perl code.
 
-=head2 my $prereqs = $scanner->scan_file( $path );
+=head2 scan_file
+
+  my $prereqs = $scanner->scan_file( $path );
 
 Return a list of prereqs with their minimum version (0 if no minimum
 specified) given a path to a Perl file.
 
-=head2 my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
+=head2 scan_ppi_document
+
+  my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
 
 Return a list of prereqs with their minimum version (0 if no minimum
-specified) given a L<PPI> document.
+specified) given a L<PPI::Document>.
 
 =for Pod::Coverage::TrustPod new
 
-=head1 AUTHOR
+=head1 AUTHORS
 
   Jerome Quelin
+  Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

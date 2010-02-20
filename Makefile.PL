@@ -14,12 +14,12 @@ my %WriteMakefileArgs = (
                                  },
                        'NAME' => 'Perl::PrereqScanner',
                        'DISTNAME' => 'Perl-PrereqScanner',
-                       'AUTHOR' => 'Jerome Quelin',
+                       'AUTHOR' => 'Jerome Quelin, Ricardo Signes <rjbs@cpan.org>',
                        'ABSTRACT' => 'a tool to scan your Perl code for its prerequisites',
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100500',
+                       'VERSION' => '0.100510',
                        'LICENSE' => 'perl',
                        'PREREQ_PM' => {
                                         'Try::Tiny' => 0,
@@ -28,9 +28,9 @@ my %WriteMakefileArgs = (
                                         'namespace::autoclean' => 0,
                                         'FindBin' => 0,
                                         'ExtUtils::MakeMaker' => '6.11',
-                                        'version' => 0,
-                                        'Test::More' => 0,
                                         'List::Util' => 0,
+                                        'Test::More' => 0,
+                                        'Version::Requirements' => 0,
                                         'PPI::Document' => 0,
                                         'File::Temp' => 0,
                                         'File::Spec::Functions' => 0
