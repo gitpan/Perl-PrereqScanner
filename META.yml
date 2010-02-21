@@ -3,7 +3,7 @@ abstract: 'a tool to scan your Perl code for its prerequisites'
 author:
   - 'Jerome Quelin'
   - 'Ricardo Signes <rjbs@cpan.org>'
-generated_by: 'Dist::Zilla version 1.100160'
+generated_by: 'Dist::Zilla version 1.100520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -26,4 +26,4 @@ requires:
 resources:
   MailingList: http://www.listbox.com/subscribe/?list_id=139292
   repository: git://git.codesimply.com/Perl-PrereqScanner.git
-version: 0.100510
+version: 0.100520

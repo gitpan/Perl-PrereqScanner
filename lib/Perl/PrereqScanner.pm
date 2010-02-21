@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100510';
+our $VERSION = '0.100520';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 use PPI;
@@ -103,7 +103,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100510
+version 0.100520
 
 =head1 SYNOPSIS
 
