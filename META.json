@@ -8,7 +8,7 @@
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
    "generated_by" : "Dist::Zilla version 1.100520",
-   "version" : "0.100520",
+   "version" : "0.100521",
    "name" : "Perl-PrereqScanner",
    "author" : [
       "Jerome Quelin",
@@ -16,19 +16,19 @@
    ],
    "license" : "perl",
    "requires" : {
-      "PPI" : "0",
-      "Scalar::Util" : "0",
-      "Try::Tiny" : "0",
-      "namespace::autoclean" : "0",
-      "FindBin" : "0",
+      "PPI" : 0,
+      "Scalar::Util" : 0,
+      "Try::Tiny" : 0,
+      "namespace::autoclean" : 0,
+      "FindBin" : 0,
       "ExtUtils::MakeMaker" : "6.11",
       "List::Util" : "0",
-      "Test::More" : "0",
+      "Test::More" : 0,
       "perl" : "5.010",
-      "Version::Requirements" : "0",
-      "File::Temp" : "0",
-      "PPI::Document" : "0",
-      "File::Spec::Functions" : "0"
+      "Version::Requirements" : "0.100520",
+      "File::Temp" : 0,
+      "PPI::Document" : 0,
+      "File::Spec::Functions" : 0
    },
    "abstract" : "a tool to scan your Perl code for its prerequisites"
 }

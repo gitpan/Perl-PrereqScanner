@@ -19,7 +19,7 @@ my %WriteMakefileArgs = (
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100520',
+                       'VERSION' => '0.100521',
                        'LICENSE' => 'perl',
                        'PREREQ_PM' => {
                                         'Try::Tiny' => 0,
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
                                         'ExtUtils::MakeMaker' => '6.11',
                                         'List::Util' => 0,
                                         'Test::More' => 0,
-                                        'Version::Requirements' => 0,
+                                        'Version::Requirements' => '0.100520',
                                         'PPI::Document' => 0,
                                         'File::Temp' => 0,
                                         'File::Spec::Functions' => 0

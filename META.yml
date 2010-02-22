@@ -20,10 +20,10 @@ requires:
   Scalar::Util: 0
   Test::More: 0
   Try::Tiny: 0
-  Version::Requirements: 0
+  Version::Requirements: 0.100520
   namespace::autoclean: 0
   perl: 5.010
 resources:
   MailingList: http://www.listbox.com/subscribe/?list_id=139292
   repository: git://git.codesimply.com/Perl-PrereqScanner.git
-version: 0.100520
+version: 0.100521

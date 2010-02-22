@@ -3,13 +3,13 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100520';
+our $VERSION = '0.100521';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 use PPI;
 use List::Util qw(max);
 use Scalar::Util qw(blessed);
-use Version::Requirements;
+use Version::Requirements 0.100520;
 
 use namespace::autoclean;
 
@@ -89,7 +89,7 @@ sub scan_ppi_document {
 
   $req->add_minimum($_ => 0) for @bases;
 
-  return $req->as_string_hash;
+  return $req;
 }
 
 1;
@@ -103,7 +103,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100520
+version 0.100521
 
 =head1 SYNOPSIS
 
@@ -151,22 +151,22 @@ since it's only recently become a core library.
 
   my $prereqs = $scanner->scan_string( $perl_code );
 
-Return a list of prereqs with their minimum version (0 if no minimum
-specified) given a string of Perl code.
+Given a string containing Perl source code, this method returns a
+Version::Requirements object describing the modules it requires.
 
 =head2 scan_file
 
   my $prereqs = $scanner->scan_file( $path );
 
-Return a list of prereqs with their minimum version (0 if no minimum
-specified) given a path to a Perl file.
+Given a file path to a Perl document, this method returns a
+Version::Requirements object describing the modules it requires.
 
 =head2 scan_ppi_document
 
   my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
 
-Return a list of prereqs with their minimum version (0 if no minimum
-specified) given a L<PPI::Document>.
+Given a L<PPI::Document>, this method returns a Version::Requirements object
+describing the modules it requires.
 
 =for Pod::Coverage::TrustPod new
 
