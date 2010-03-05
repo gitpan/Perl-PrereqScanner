@@ -14,27 +14,30 @@ my %WriteMakefileArgs = (
                                  },
                        'NAME' => 'Perl::PrereqScanner',
                        'DISTNAME' => 'Perl-PrereqScanner',
+                       'CONFIGURE_REQUIRES' => {
+                                                 'ExtUtils::MakeMaker' => '6.11'
+                                               },
                        'AUTHOR' => 'Jerome Quelin, Ricardo Signes <rjbs@cpan.org>',
+                       'BUILD_REQUIRES' => {},
                        'ABSTRACT' => 'a tool to scan your Perl code for its prerequisites',
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100521',
-                       'LICENSE' => 'perl',
+                       'VERSION' => '0.100630',
                        'PREREQ_PM' => {
-                                        'Try::Tiny' => 0,
-                                        'Scalar::Util' => 0,
-                                        'PPI' => 0,
-                                        'namespace::autoclean' => 0,
-                                        'FindBin' => 0,
-                                        'ExtUtils::MakeMaker' => '6.11',
-                                        'List::Util' => 0,
-                                        'Test::More' => 0,
-                                        'Version::Requirements' => '0.100520',
-                                        'PPI::Document' => 0,
-                                        'File::Temp' => 0,
-                                        'File::Spec::Functions' => 0
-                                      }
+                                        'Scalar::Util' => '0',
+                                        'PPI' => '0',
+                                        'Try::Tiny' => '0',
+                                        'namespace::autoclean' => '0',
+                                        'FindBin' => '0',
+                                        'Test::More' => '0',
+                                        'List::Util' => '0',
+                                        'Version::Requirements' => '0.100630',
+                                        'PPI::Document' => '0',
+                                        'File::Temp' => '0',
+                                        'File::Spec::Functions' => '0'
+                                      },
+                       'LICENSE' => 'perl'
                      );
 
 

@@ -1,15 +1,15 @@
-use 5.010;
+use 5.008;
 use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100521';
+our $VERSION = '0.100630';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 use PPI;
 use List::Util qw(max);
 use Scalar::Util qw(blessed);
-use Version::Requirements 0.100520;
+use Version::Requirements 0.100630; # merge with 0-min bug fixed
 
 use namespace::autoclean;
 
@@ -59,9 +59,9 @@ sub scan_ppi_document {
     }
 
     # skipping pragamata
-    next if $node->module ~~ [ qw{ strict warnings lib } ];
+    next if grep { $_ eq $node->module } qw{ strict warnings lib };
 
-    if ( $node->module ~~ [ qw{ base parent } ] ) {
+    if (grep { $_ eq $node->module } qw{ base parent }) {
       # the content is in the 5th token
       my @meat = $node->arguments;
 
@@ -83,7 +83,7 @@ sub scan_ppi_document {
     map  { $self->_q_contents( $_ ) }
     grep { $_->isa('PPI::Token::Quote') || $_->isa('PPI::Token::QuoteLike') }
     map  { $_->children }
-    grep { $_->child(0)->literal ~~ [ qw{ with extends } ] }
+    grep { $_->child(0)->literal =~ m{\Awith|extends\z} }
     grep { $_->child(0)->isa('PPI::Token::Word') }
     @{ $ppi_doc->find('PPI::Statement') || [] };
 
@@ -103,7 +103,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100521
+version 0.100630
 
 =head1 SYNOPSIS
 
