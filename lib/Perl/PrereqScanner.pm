@@ -3,10 +3,10 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100630';
+our $VERSION = '0.100680';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
-use PPI;
+use PPI 1.205; # module_version
 use List::Util qw(max);
 use Scalar::Util qw(blessed);
 use Version::Requirements 0.100630; # merge with 0-min bug fixed
@@ -103,7 +103,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100630
+version 0.100680
 
 =head1 SYNOPSIS
 
