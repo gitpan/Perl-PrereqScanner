@@ -3,12 +3,12 @@
       "repository" : "git://git.codesimply.com/Perl-PrereqScanner.git",
       "MailingList" : "http://www.listbox.com/subscribe/?list_id=139292"
    },
-   "generated_by" : "Dist::Zilla version 1.100660",
+   "generated_by" : "Dist::Zilla version 1.100680",
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "0.100680",
+   "version" : "0.100690",
    "name" : "Perl-PrereqScanner",
    "author" : [
       "Jerome Quelin",
@@ -24,7 +24,7 @@
       "FindBin" : "0",
       "Test::More" : "0",
       "List::Util" : "0",
-      "perl" : "5.010",
+      "perl" : "5.008",
       "Version::Requirements" : "0.100630",
       "PPI::Document" : "0",
       "File::Temp" : "0",

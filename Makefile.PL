@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
- BEGIN { require 5.010; } 
+ BEGIN { require 5.008; } 
 
 use ExtUtils::MakeMaker 6.11;
 
@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100680',
+                       'VERSION' => '0.100690',
                        'PREREQ_PM' => {
                                         'Scalar::Util' => '0',
                                         'PPI' => '1.205',
