@@ -169,4 +169,20 @@ prereq_is(
   },
 );
 
+# test case for #55713: support for use parent -norequire
+prereq_is(
+  'use parent -norequire, qw{ Parent::QW1 Parent::QW2 };',
+  {
+    'Parent::QW1' => 0,
+    'Parent::QW2' => 0,
+    parent => 0,
+  },
+);
+
+# test case for #55851: require $foo
+prereq_is(
+  'my $foo = "Carp"; require $foo',
+  {},
+);
+
 done_testing;

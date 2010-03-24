@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100690';
+our $VERSION = '0.100830';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 use PPI 1.205; # module_version
@@ -61,9 +61,13 @@ sub scan_ppi_document {
     # skipping pragamata
     next if grep { $_ eq $node->module } qw{ strict warnings lib };
 
+    # inheritance
     if (grep { $_ eq $node->module } qw{ base parent }) {
-      # the content is in the 5th token
-      my @meat = $node->arguments;
+      # rt#55713: skip arguments to base or parent, focus only on inheritance
+      my @meat = grep {
+           $_->isa('PPI::Token::QuoteLike::Words')
+        || $_->isa('PPI::Token::Quote')
+        } $node->arguments;
 
       my @parents = map { $self->_q_contents($_) } @meat;
       $req->add_minimum($_ => 0) for @parents;
@@ -75,7 +79,8 @@ sub scan_ppi_document {
     # base has been core since perl 5.0
     next if $node->module eq 'base' and not $version;
 
-    $req->add_minimum($node->module, $version);
+    # rt#55851: 'require $foo;' shouldn't add any prereq
+    $req->add_minimum($node->module, $version) if $node->module;
   }
 
   # Moose-based roles / inheritance
@@ -103,7 +108,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100690
+version 0.100830
 
 =head1 SYNOPSIS
 

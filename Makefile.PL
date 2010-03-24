@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100690',
+                       'VERSION' => '0.100830',
                        'PREREQ_PM' => {
                                         'Scalar::Util' => '0',
                                         'PPI' => '1.205',
