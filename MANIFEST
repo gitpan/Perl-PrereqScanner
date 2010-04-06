@@ -9,5 +9,4 @@ bin/scan_prereqs
 dist.ini
 lib/Perl/PrereqScanner.pm
 t/autoprereq.t
-t/release-pod-coverage.t
 t/release-pod-syntax.t

@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-our $VERSION = '0.100830';
+$Perl::PrereqScanner::VERSION = '0.100960';
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
 use PPI 1.205; # module_version
@@ -58,8 +58,8 @@ sub scan_ppi_document {
       next;
     }
 
-    # skipping pragamata
-    next if grep { $_ eq $node->module } qw{ strict warnings lib };
+    # skipping pragmata
+    next if grep { $_ eq $node->module } qw{ strict warnings lib feature };
 
     # inheritance
     if (grep { $_ eq $node->module } qw{ base parent }) {
@@ -108,7 +108,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100830
+version 0.100960
 
 =head1 SYNOPSIS
 
