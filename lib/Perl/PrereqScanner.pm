@@ -1,30 +1,54 @@
 use 5.008;
-use strict;
-use warnings;
-
 package Perl::PrereqScanner;
-$Perl::PrereqScanner::VERSION = '0.100960';
+BEGIN {
+  $Perl::PrereqScanner::VERSION = '0.101250';
+}
+use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
-use PPI 1.205; # module_version
 use List::Util qw(max);
-use Scalar::Util qw(blessed);
+use Params::Util qw(_CLASS);
+use Perl::PrereqScanner::Scanner;
+use PPI 1.205; # module_version
+use String::RewritePrefix rewrite => {
+  -as => '__rewrite_scanner',
+  prefixes => { '' => 'Perl::PrereqScanner::Scanner::', '=' => '' },
+};
+
 use Version::Requirements 0.100630; # merge with 0-min bug fixed
 
 use namespace::autoclean;
 
-sub _q_contents {
-  my ($self, $token) = @_;
-  my @contents = $token->isa('PPI::Token::QuoteLike::Words')
-    ? ( $token->literal )
-    : ( $token->string  );
+has scanners => (
+  is  => 'ro',
+  isa => 'ArrayRef[Perl::PrereqScanner::Scanner]',
+  init_arg => undef,
+  writer   => '_set_scanners',
+);
 
-  return @contents;
+sub __scanner_from_str {
+  my $class = __rewrite_scanner($_[0]);
+  confess "illegal class name: $class" unless _CLASS($class);
+  eval "require $class; 1" or die $@;
+  return $class->new;
 }
 
-sub new {
-  my ($class) = @_;
-  bless {} => $class;
+sub __prepare_scanners {
+  my ($self, $specs) = @_;
+  my @scanners = map {; ref $_ ? $_ : __scanner_from_str($_) } @$specs;
+
+  return \@scanners;
+}
+
+sub BUILD {
+  my ($self, $arg) = @_;
+
+  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 Moose) ] };
+  my @extra_scanners = @{ $arg->{extra_scanners} || [] };
+
+  my $scanners = $self->__prepare_scanners([ @scanners, @extra_scanners ]);
+
+  $self->_set_scanners($scanners);
 }
 
 
@@ -49,50 +73,9 @@ sub scan_ppi_document {
 
   my $req = Version::Requirements->new;
 
-  # regular use and require
-  my $includes = $ppi_doc->find('Statement::Include') || [];
-  for my $node ( @$includes ) {
-    # minimum perl version
-    if ( $node->version ) {
-      $req->add_minimum(perl => $node->version);
-      next;
-    }
-
-    # skipping pragmata
-    next if grep { $_ eq $node->module } qw{ strict warnings lib feature };
-
-    # inheritance
-    if (grep { $_ eq $node->module } qw{ base parent }) {
-      # rt#55713: skip arguments to base or parent, focus only on inheritance
-      my @meat = grep {
-           $_->isa('PPI::Token::QuoteLike::Words')
-        || $_->isa('PPI::Token::Quote')
-        } $node->arguments;
-
-      my @parents = map { $self->_q_contents($_) } @meat;
-      $req->add_minimum($_ => 0) for @parents;
-    }
-
-    # regular modules
-    my $version = $node->module_version ? $node->module_version->content : 0;
-
-    # base has been core since perl 5.0
-    next if $node->module eq 'base' and not $version;
-
-    # rt#55851: 'require $foo;' shouldn't add any prereq
-    $req->add_minimum($node->module, $version) if $node->module;
+  for my $scanner (@{ $self->{scanners} }) {
+    $scanner->scan_for_prereqs($ppi_doc, $req);
   }
-
-  # Moose-based roles / inheritance
-  my @bases =
-    map  { $self->_q_contents( $_ ) }
-    grep { $_->isa('PPI::Token::Quote') || $_->isa('PPI::Token::QuoteLike') }
-    map  { $_->children }
-    grep { $_->child(0)->literal =~ m{\Awith|extends\z} }
-    grep { $_->child(0)->isa('PPI::Token::Word') }
-    @{ $ppi_doc->find('PPI::Statement') || [] };
-
-  $req->add_minimum($_ => 0) for @bases;
 
   return $req;
 }
@@ -108,15 +91,15 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.100960
+version 0.101250
 
 =head1 SYNOPSIS
 
   use Perl::PrereqScanner;
-  my $scan    = Perl::PrereqScanner->new;
-  my $prereqs = $scan->scan_ppi_document( $ppi_doc );
-  my $prereqs = $scan->scan_file( $file_path );
-  my $prereqs = $scan->scan_string( $perl_code );
+  my $scanner = Perl::PrereqScanner->new;
+  my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
+  my $prereqs = $scanner->scan_file( $file_path );
+  my $prereqs = $scanner->scan_string( $perl_code );
 
 =head1 DESCRIPTION
 
@@ -149,6 +132,19 @@ L<Moose> roles included with the C<with> keyword
 It will trim the following pragamata: C<strict>, C<warnings>, and C<lib>.
 C<base> is trimmed unless a specific version is required.  C<parent> is kept,
 since it's only recently become a core library.
+
+=head2 Scanner Plugins
+
+Perl::PrereqScanner works by running a series of scanners over a PPI::Document
+representing the code to scan.  By default the "Perl5" and "Moose" scanners
+are run.  You can supply your own scanners when constructing your
+PrereqScanner:
+
+  # Do not use the Moose scanner, only Perl5:
+  my $scanner = Perl::PrereqScanner->new({ plugins => [ qw(Perl5) ] });
+
+  # Use any stock plugins, plus Example:
+  my $scanner = Perl::PrereqScanner->new({ extra_plugins => [ qw(Example) ] });
 
 =head1 METHODS
 

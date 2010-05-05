@@ -9,41 +9,54 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-                       'test' => {
-                                   'TESTS' => 't/*.t'
-                                 },
-                       'NAME' => 'Perl::PrereqScanner',
-                       'DISTNAME' => 'Perl-PrereqScanner',
+                       'ABSTRACT' => 'a tool to scan your Perl code for its prerequisites',
+                       'AUTHOR' => 'Jerome Quelin, Ricardo Signes <rjbs@cpan.org>',
+                       'BUILD_REQUIRES' => {
+                                             'File::Temp' => '0',
+                                             'PPI::Document' => '0',
+                                             'Test::More' => '0',
+                                             'Try::Tiny' => '0'
+                                           },
                        'CONFIGURE_REQUIRES' => {
                                                  'ExtUtils::MakeMaker' => '6.31'
                                                },
-                       'AUTHOR' => 'Jerome Quelin, Ricardo Signes <rjbs@cpan.org>',
-                       'BUILD_REQUIRES' => {
-                                             'Test::More' => '0',
-                                             'Try::Tiny' => '0',
-                                             'PPI::Document' => '0',
-                                             'File::Temp' => '0'
-                                           },
-                       'ABSTRACT' => 'a tool to scan your Perl code for its prerequisites',
+                       'DISTNAME' => 'Perl-PrereqScanner',
                        'EXE_FILES' => [
                                         'bin/scan_prereqs'
                                       ],
-                       'VERSION' => '0.100960',
+                       'LICENSE' => 'perl',
+                       'NAME' => 'Perl::PrereqScanner',
                        'PREREQ_PM' => {
-                                        'Scalar::Util' => '0',
-                                        'List::Util' => '0',
-                                        'PPI' => '1.205',
-                                        'namespace::autoclean' => '0',
-                                        'Version::Requirements' => '0.100630',
+                                        'File::Spec::Functions' => '0',
                                         'FindBin' => '0',
-                                        'File::Spec::Functions' => '0'
+                                        'List::Util' => '0',
+                                        'Moose' => '0',
+                                        'Moose::Role' => '0',
+                                        'PPI' => '1.205',
+                                        'Params::Util' => '0',
+                                        'String::RewritePrefix' => '0',
+                                        'Version::Requirements' => '0.100630',
+                                        'namespace::autoclean' => '0'
                                       },
-                       'LICENSE' => 'perl'
+                       'VERSION' => '0.101250',
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 }
                      );
 
 
-delete $WriteMakefileArgs{BUILD_REQUIRES}
-  unless eval { ExtUtils::MakeMaker->VERSION(6.56) };
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM}; 
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod}; 
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
   unless eval { ExtUtils::MakeMaker->VERSION(6.52) };

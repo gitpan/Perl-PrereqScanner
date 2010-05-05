@@ -1,5 +1,9 @@
 Revision history for Perl-PrereqScanner
 
+0.101250  2010-05-05 09:32:19 America/New_York
+ - convert to Moose object system
+ - add the Scanner role and pluggable scanners
+
 0.100960  2010-04-06 17:03:46 Europe/Paris
  - add 'feature' pragma to skip list (mark gardner)
  - added some tests (mark gardner)

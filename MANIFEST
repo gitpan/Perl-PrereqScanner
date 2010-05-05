@@ -8,5 +8,8 @@ README
 bin/scan_prereqs
 dist.ini
 lib/Perl/PrereqScanner.pm
+lib/Perl/PrereqScanner/Scanner.pm
+lib/Perl/PrereqScanner/Scanner/Moose.pm
+lib/Perl/PrereqScanner/Scanner/Perl5.pm
 t/autoprereq.t
 t/release-pod-syntax.t
