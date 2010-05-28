@@ -1,6 +1,6 @@
 package Perl::PrereqScanner::Scanner;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::VERSION = '0.101250';
+  $Perl::PrereqScanner::Scanner::VERSION = '0.101480';
 }
 use Moose::Role;
 # ABSTRACT: something that scans for prereqs in a Perl document
@@ -31,7 +31,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 0.101250
+version 0.101480
 
 =head1 DESCRIPTION
 
