@@ -1,7 +1,7 @@
 use 5.008;
 package Perl::PrereqScanner;
 BEGIN {
-  $Perl::PrereqScanner::VERSION = '0.101480';
+  $Perl::PrereqScanner::VERSION = '0.101890';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -91,7 +91,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.101480
+version 0.101890
 
 =head1 SYNOPSIS
 
