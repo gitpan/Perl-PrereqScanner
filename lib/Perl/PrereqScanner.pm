@@ -1,7 +1,7 @@
 use 5.008;
 package Perl::PrereqScanner;
 BEGIN {
-  $Perl::PrereqScanner::VERSION = '0.101890';
+  $Perl::PrereqScanner::VERSION = '0.101891';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -43,7 +43,7 @@ sub __prepare_scanners {
 sub BUILD {
   my ($self, $arg) = @_;
 
-  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 Moose) ] };
+  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 TestMore Moose) ] };
   my @extra_scanners = @{ $arg->{extra_scanners} || [] };
 
   my $scanners = $self->__prepare_scanners([ @scanners, @extra_scanners ]);
@@ -91,7 +91,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.101890
+version 0.101891
 
 =head1 SYNOPSIS
 
@@ -173,8 +173,17 @@ describing the modules it requires.
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

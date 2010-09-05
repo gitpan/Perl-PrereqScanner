@@ -1,6 +1,6 @@
 package Perl::PrereqScanner::Scanner::Moose;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::Moose::VERSION = '0.101890';
+  $Perl::PrereqScanner::Scanner::Moose::VERSION = '0.101891';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -12,8 +12,21 @@ sub scan_for_prereqs {
 
   # Moose-based roles / inheritance
   my @bases =
+    grep { Params::Util::_CLASS($_) }
     map  { $self->_q_contents( $_ ) }
     grep { $_->isa('PPI::Token::Quote') || $_->isa('PPI::Token::QuoteLike') }
+
+    # This is what we get when someone does:   with('Foo');
+    # The target to get at is the PPI::Token::Quote::Single.
+    # -- rjbs, 2010-09-05
+    #
+    # PPI::Statement
+    #   PPI::Token::Word
+    #   PPI::Structure::List
+    #     PPI::Statement::Expression
+    #       PPI::Token::Quote::Single
+    #   PPI::Token::Structure
+
     map  { $_->children }
     grep { $_->child(0)->literal =~ m{\Awith|extends\z} }
     grep { $_->child(0)->isa('PPI::Token::Word') }
@@ -33,7 +46,7 @@ Perl::PrereqScanner::Scanner::Moose - scan for Moose sugar indicators of require
 
 =head1 VERSION
 
-version 0.101890
+version 0.101891
 
 =head1 DESCRIPTION
 
@@ -53,8 +66,17 @@ L<Moose> roles included with the C<with> keyword
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -1,6 +1,6 @@
 package Perl::PrereqScanner::Scanner::Perl5;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '0.101890';
+  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '0.101891';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -56,7 +56,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 0.101890
+version 0.101891
 
 =head1 DESCRIPTION
 
@@ -76,8 +76,17 @@ regular inheritance declared with the C<base> and C<parent> pragmata
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

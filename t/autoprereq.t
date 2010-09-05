@@ -97,12 +97,27 @@ prereq_is(
   },
 );
 
+TODO: {
+  local $TODO = 'enable with()';
+  prereq_is(
+    "with('Paren::Role');",
+    {
+      'Paren::Role' => 0,
+    },
+  );
+}
+
 prereq_is(
   'with qw(With::QW1 With::QW2);',
   {
     'With::QW1' => 0,
     'With::QW2' => 0,
   },
+);
+
+prereq_is(
+  'with "::Foo"',
+  { },
 );
 
 prereq_is(
@@ -190,4 +205,12 @@ prereq_is(
   q{use strict; use warnings; use lib '.'; use feature ':5.10';},
   {},
 );
+
+prereq_is(
+  q{use Test::More; is 0, 1; done_testing},
+  {
+    'Test::More' => '0.88',
+  },
+);
+
 done_testing;
