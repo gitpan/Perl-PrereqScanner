@@ -1,6 +1,6 @@
 package Perl::PrereqScanner::Scanner::TestMore;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '0.101891';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '0.101892';
 }
 use Moose;
 use List::MoreUtils 'none';
@@ -30,7 +30,7 @@ Perl::PrereqScanner::Scanner::TestMore
 
 =head1 VERSION
 
-version 0.101891
+version 0.101892
 
 =head1 AUTHORS
 

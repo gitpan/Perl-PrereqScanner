@@ -1,6 +1,6 @@
 package Perl::PrereqScanner::Scanner::Moose;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::Moose::VERSION = '0.101891';
+  $Perl::PrereqScanner::Scanner::Moose::VERSION = '0.101892';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -46,7 +46,7 @@ Perl::PrereqScanner::Scanner::Moose - scan for Moose sugar indicators of require
 
 =head1 VERSION
 
-version 0.101891
+version 0.101892
 
 =head1 DESCRIPTION
 

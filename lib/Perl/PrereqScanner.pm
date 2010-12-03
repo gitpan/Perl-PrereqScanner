@@ -1,7 +1,7 @@
 use 5.008;
 package Perl::PrereqScanner;
 BEGIN {
-  $Perl::PrereqScanner::VERSION = '0.101891';
+  $Perl::PrereqScanner::VERSION = '0.101892';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -55,6 +55,8 @@ sub BUILD {
 sub scan_string {
   my ($self, $str) = @_;
   my $ppi = PPI::Document->new( \$str );
+  confess "PPI parse failed" unless defined $ppi;
+
   return $self->scan_ppi_document( $ppi );
 }
 
@@ -63,6 +65,8 @@ sub scan_string {
 sub scan_file {
   my ($self, $path) = @_;
   my $ppi = PPI::Document->new( $path );
+  confess "PPI failed to parse '$path'" unless defined $ppi;
+
   return $self->scan_ppi_document( $ppi );
 }
 
@@ -91,7 +95,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 0.101891
+version 0.101892
 
 =head1 SYNOPSIS
 
@@ -155,12 +159,16 @@ PrereqScanner:
 Given a string containing Perl source code, this method returns a
 Version::Requirements object describing the modules it requires.
 
+This method will throw an exception if PPI fails to parse the code.
+
 =head2 scan_file
 
   my $prereqs = $scanner->scan_file( $path );
 
 Given a file path to a Perl document, this method returns a
 Version::Requirements object describing the modules it requires.
+
+This method will throw an exception if PPI fails to parse the code.
 
 =head2 scan_ppi_document
 
