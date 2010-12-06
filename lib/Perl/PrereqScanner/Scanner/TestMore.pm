@@ -1,6 +1,9 @@
+use strict;
+use warnings;
+
 package Perl::PrereqScanner::Scanner::TestMore;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '0.101892';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.000';
 }
 use Moose;
 use List::MoreUtils 'none';
@@ -30,21 +33,12 @@ Perl::PrereqScanner::Scanner::TestMore
 
 =head1 VERSION
 
-version 0.101892
+version 1.000
 
 =head1 AUTHORS
 
-=over 4
-
-=item *
-
-Jerome Quelin
-
-=item *
-
-Ricardo Signes <rjbs@cpan.org>
-
-=back
+  Jerome Quelin
+  Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

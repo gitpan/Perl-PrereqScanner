@@ -14,7 +14,7 @@ my %WriteMakefileArgs = (
   'BUILD_REQUIRES' => {
     'File::Temp' => '0',
     'PPI::Document' => '0',
-    'Test::More' => '0',
+    'Test::More' => '0.96',
     'Try::Tiny' => '0'
   },
   'CONFIGURE_REQUIRES' => {
@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     'Version::Requirements' => '0.100630',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.101892',
+  'VERSION' => '1.000',
   'test' => {
     'TESTS' => 't/*.t'
   }
