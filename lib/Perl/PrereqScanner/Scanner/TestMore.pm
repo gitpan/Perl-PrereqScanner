@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.000';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.001';
 }
 use Moose;
 use List::MoreUtils 'none';
@@ -33,7 +33,7 @@ Perl::PrereqScanner::Scanner::TestMore
 
 =head1 VERSION
 
-version 1.000
+version 1.001
 
 =head1 AUTHORS
 
