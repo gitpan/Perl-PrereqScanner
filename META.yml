@@ -33,7 +33,7 @@ requires:
 resources:
   repository: git://github.com/jquelin/perl-prereqscanner.git
   x_MailingList: http://www.listbox.com/subscribe/?list_id=139292
-version: 1.001
+version: 1.002
 x_Dist_Zilla:
   plugins:
     -
@@ -103,7 +103,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RJBS/Git::NextVersion'
-      version: 1.102810
+      version: 1.103520
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@RJBS/PkgVersion'
@@ -127,7 +127,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Repository
       name: '@RJBS/Repository'
-      version: 0.16
+      version: 0.17
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -143,19 +143,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@RJBS/@Git/Check'
-      version: 1.102810
+      version: 1.103520
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@RJBS/@Git/Commit'
-      version: 1.102810
+      version: 1.103520
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@RJBS/@Git/Tag'
-      version: 1.102810
+      version: 1.103520
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@RJBS/@Git/Push'
-      version: 1.102810
+      version: 1.103520
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
