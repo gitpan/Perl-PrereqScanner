@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::VERSION = '1.002';
+  $Perl::PrereqScanner::Scanner::VERSION = '1.003';
 }
 use Moose::Role;
 # ABSTRACT: something that scans for prereqs in a Perl document
@@ -37,7 +37,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 DESCRIPTION
 
@@ -54,8 +54,17 @@ its findings about the PPI document.
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

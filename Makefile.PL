@@ -4,7 +4,7 @@ use warnings;
 
 BEGIN { require 5.008; }
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
     'Try::Tiny' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Perl-PrereqScanner',
   'EXE_FILES' => [
@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     'Version::Requirements' => '0.100630',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.002',
+  'VERSION' => '1.003',
   'test' => {
     'TESTS' => 't/*.t'
   }

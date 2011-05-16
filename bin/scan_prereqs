@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 BEGIN {
-  $Perl::PrereqScanner::App::VERSION = '1.002';
+  $Perl::PrereqScanner::App::VERSION = '1.003';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -34,12 +34,21 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

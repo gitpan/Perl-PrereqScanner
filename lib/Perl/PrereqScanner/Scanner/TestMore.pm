@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.002';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.003';
 }
 # ABSTRACT: scanner to find recent Test::More usage
 
@@ -36,7 +36,7 @@ Perl::PrereqScanner::Scanner::TestMore - scanner to find recent Test::More usage
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 DESCRIPTION
 
@@ -46,8 +46,17 @@ accordingly.
 
 =head1 AUTHORS
 
-  Jerome Quelin
-  Ricardo Signes <rjbs@cpan.org>
+=over 4
+
+=item *
+
+Jerome Quelin
+
+=item *
+
+Ricardo Signes <rjbs@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
