@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Moose;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::Moose::VERSION = '1.003';
+  $Perl::PrereqScanner::Scanner::Moose::VERSION = '1.004';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -39,10 +39,12 @@ sub scan_for_prereqs {
       while ( $hunkdata[0]->isa('PPI::Token::Whitespace') ) { shift @hunkdata }
       if ( $hunkdata[1]->isa('PPI::Structure::List') ) {
         @hunkdata = $hunkdata[1]->children;
+        next unless @hunkdata;
         while ( $hunkdata[0]->isa('PPI::Token::Whitespace') ) { shift @hunkdata }
       }
       if ( $hunkdata[0]->isa('PPI::Statement::Expression') ) {
         @hunkdata = $hunkdata[0]->children;
+        next unless @hunkdata;
       }
 
       # possibly contains a version declaration!
@@ -122,7 +124,7 @@ Perl::PrereqScanner::Scanner::Moose - scan for Moose sugar indicators of require
 
 =head1 VERSION
 
-version 1.003
+version 1.004
 
 =head1 DESCRIPTION
 

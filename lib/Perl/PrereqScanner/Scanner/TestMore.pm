@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
 BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.003';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.004';
 }
 # ABSTRACT: scanner to find recent Test::More usage
 
@@ -36,7 +36,7 @@ Perl::PrereqScanner::Scanner::TestMore - scanner to find recent Test::More usage
 
 =head1 VERSION
 
-version 1.003
+version 1.004
 
 =head1 DESCRIPTION
 

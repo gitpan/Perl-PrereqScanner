@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110440'
+generated_by: 'Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -34,7 +34,7 @@ resources:
   homepage: http://github.com/rjbs/perl-prereqscanner
   repository: http://github.com/rjbs/perl-prereqscanner
   x_MailingList: http://www.listbox.com/subscribe/?list_id=139292
-version: 1.003
+version: 1.004
 x_Dist_Zilla:
   plugins:
     -
@@ -44,7 +44,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::CheckPrereqsIndexed
       name: '@RJBS/CheckPrereqsIndexed'
-      version: 0.002
+      version: 0.003
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@RJBS/@Basic/GatherDir'
@@ -108,7 +108,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RJBS/Git::NextVersion'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@RJBS/PkgVersion'
@@ -152,19 +152,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@RJBS/@Git/Check'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@RJBS/@Git/Commit'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@RJBS/@Git/Tag'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@RJBS/@Git/Push'
-      version: 1.110500
+      version: 1.111460
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
