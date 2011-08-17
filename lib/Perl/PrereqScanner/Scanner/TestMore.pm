@@ -2,8 +2,8 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
-BEGIN {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.004';
+{
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.005';
 }
 # ABSTRACT: scanner to find recent Test::More usage
 
@@ -36,7 +36,7 @@ Perl::PrereqScanner::Scanner::TestMore - scanner to find recent Test::More usage
 
 =head1 VERSION
 
-version 1.004
+version 1.005
 
 =head1 DESCRIPTION
 

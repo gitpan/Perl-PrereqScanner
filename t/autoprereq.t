@@ -144,7 +144,14 @@ prereq_is(
   },
 );
 
-prereq_is('use base "Base::QQ1";', { 'Base::QQ1' => 0 });
+prereq_is(
+  'use base "Base::QQ1";',
+  {
+    'Base::QQ1' => 0,
+    base => 0,
+  },
+);
+
 prereq_is(
   'use base 10 "Base::QQ1";',
   {
@@ -154,7 +161,7 @@ prereq_is(
 );
 prereq_is(
   'use base qw{ Base::QW1 Base::QW2 };',
-  { 'Base::QW1' => 0, 'Base::QW2' => 0 },
+  { 'Base::QW1' => 0, 'Base::QW2' => 0, base => 0 },
 );
 
 prereq_is(
@@ -216,10 +223,9 @@ prereq_is(
   {},
 );
 
-# test case for ignoring pragmata
 prereq_is(
   q{use strict; use warnings; use lib '.'; use feature ':5.10';},
-  {},
+  { strict => 0, warnings => 0, feature => 0 },
 );
 
 prereq_is(
@@ -506,5 +512,31 @@ prereq_is(
 # invalid code tests
 prereq_is( 'with;', {}, );
 prereq_is( 'with foo;', {} );
+
+# test cases for aliased.pm
+prereq_is(
+  q{use aliased 'Long::Custom::Class::Name'},
+  {
+    'aliased' => 0,
+    'Long::Custom::Class::Name' => 0,
+  },
+);
+
+prereq_is(
+  q{use aliased 0.30 'Long::Custom::Class::Name'},
+  {
+    'aliased' => '0.30',
+    'Long::Custom::Class::Name' => 0,
+  },
+);
+
+
+prereq_is(
+  q{use aliased 'Long::Custom::Class::Name' => 'Name'},
+  {
+    'aliased' => 0,
+    'Long::Custom::Class::Name' => 0,
+  },
+);
 
 done_testing;

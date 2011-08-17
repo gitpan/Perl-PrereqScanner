@@ -9,6 +9,7 @@ bin/scan_prereqs
 dist.ini
 lib/Perl/PrereqScanner.pm
 lib/Perl/PrereqScanner/Scanner.pm
+lib/Perl/PrereqScanner/Scanner/Aliased.pm
 lib/Perl/PrereqScanner/Scanner/Moose.pm
 lib/Perl/PrereqScanner/Scanner/Perl5.pm
 lib/Perl/PrereqScanner/Scanner/TestMore.pm

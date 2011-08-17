@@ -3,8 +3,8 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner;
-BEGIN {
-  $Perl::PrereqScanner::VERSION = '1.004';
+{
+  $Perl::PrereqScanner::VERSION = '1.005';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -46,7 +46,7 @@ sub __prepare_scanners {
 sub BUILD {
   my ($self, $arg) = @_;
 
-  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 TestMore Moose) ] };
+  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 TestMore Moose Aliased) ] };
   my @extra_scanners = @{ $arg->{extra_scanners} || [] };
 
   my $scanners = $self->__prepare_scanners([ @scanners, @extra_scanners ]);
@@ -98,7 +98,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.004
+version 1.005
 
 =head1 SYNOPSIS
 
@@ -134,20 +134,20 @@ L<Moose> inheritance declared with the C<extends> keyword
 
 L<Moose> roles included with the C<with> keyword
 
-=back
+=item *
 
-It will trim the following pragamata: C<strict>, C<warnings>, and C<lib>.
-C<base> is trimmed unless a specific version is required.  C<parent> is kept,
-since it's only recently become a core library.
+OO namespace aliasing using the C<aliased> module
+
+=back
 
 =head2 Scanner Plugins
 
 Perl::PrereqScanner works by running a series of scanners over a PPI::Document
-representing the code to scan.  By default the "Perl5" and "Moose" scanners
-are run.  You can supply your own scanners when constructing your
-PrereqScanner:
+representing the code to scan.  By default the "Perl5", "Moose", "TestMore"
+and "Aliased" scanners are run.  You can supply your own scanners when
+constructing your PrereqScanner:
 
-  # Do not use the Moose scanner, only Perl5:
+  # Us only the Perl5 scanner:
   my $scanner = Perl::PrereqScanner->new({ plugins => [ qw(Perl5) ] });
 
   # Use any stock plugins, plus Example:

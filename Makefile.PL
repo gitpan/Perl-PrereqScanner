@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.008; }
+use 5.008;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -37,9 +37,11 @@ my %WriteMakefileArgs = (
     'Params::Util' => '0',
     'String::RewritePrefix' => '0.005',
     'Version::Requirements' => '0.100630',
-    'namespace::autoclean' => '0'
+    'namespace::autoclean' => '0',
+    'strict' => '0',
+    'warnings' => '0'
   },
-  'VERSION' => '1.004',
+  'VERSION' => '1.005',
   'test' => {
     'TESTS' => 't/*.t'
   }

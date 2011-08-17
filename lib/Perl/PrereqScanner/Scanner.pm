@@ -2,8 +2,8 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner;
-BEGIN {
-  $Perl::PrereqScanner::Scanner::VERSION = '1.004';
+{
+  $Perl::PrereqScanner::Scanner::VERSION = '1.005';
 }
 use Moose::Role;
 # ABSTRACT: something that scans for prereqs in a Perl document
@@ -37,7 +37,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 1.004
+version 1.005
 
 =head1 DESCRIPTION
 
