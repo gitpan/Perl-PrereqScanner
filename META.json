@@ -5,7 +5,7 @@
       "Ricardo Signes <rjbs@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200015, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.200015, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -33,9 +33,7 @@
             "String::RewritePrefix" : "0.005",
             "Version::Requirements" : "0.100630",
             "namespace::autoclean" : 0,
-            "perl" : "5.008",
-            "strict" : 0,
-            "warnings" : 0
+            "perl" : "5.008"
          }
       },
       "test" : {
@@ -49,15 +47,14 @@
    },
    "release_status" : "stable",
    "resources" : {
-      "homepage" : "https://github.com/rjbs/perl-prereqscanner",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/rjbs/perl-prereqscanner",
-         "web" : "https://github.com/rjbs/perl-prereqscanner"
+         "url" : "git://github.com/jquelin/perl-prereqscanner.git",
+         "web" : "http://github.com/jquelin/perl-prereqscanner"
       },
       "x_MailingList" : "http://www.listbox.com/subscribe/?list_id=139292"
    },
-   "version" : "1.005",
+   "version" : "1.006",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -148,7 +145,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@RJBS/Git::NextVersion",
-            "version" : "1.112070"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::PkgVersion",
@@ -197,29 +194,24 @@
             "version" : "3.101641"
          },
          {
-            "class" : "Dist::Zilla::Plugin::GithubMeta",
-            "name" : "@RJBS/GithubMeta",
-            "version" : "0.16"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "@RJBS/@Git/Check",
-            "version" : "1.112070"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "name" : "@RJBS/@Git/Commit",
-            "version" : "1.112070"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@RJBS/@Git/Tag",
-            "version" : "1.112070"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@RJBS/@Git/Push",
-            "version" : "1.112070"
+            "version" : "1.111590"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
@@ -255,7 +247,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "0"
+            "is_trial" : 0
          },
          "version" : "4.200015"
       }

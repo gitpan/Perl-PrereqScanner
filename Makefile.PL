@@ -37,11 +37,9 @@ my %WriteMakefileArgs = (
     'Params::Util' => '0',
     'String::RewritePrefix' => '0.005',
     'Version::Requirements' => '0.100630',
-    'namespace::autoclean' => '0',
-    'strict' => '0',
-    'warnings' => '0'
+    'namespace::autoclean' => '0'
   },
-  'VERSION' => '1.005',
+  'VERSION' => '1.006',
   'test' => {
     'TESTS' => 't/*.t'
   }

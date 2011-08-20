@@ -1,13 +1,13 @@
 use strict;
 use warnings;
 
-package Perl::PrereqScanner::Scanner::Aliased;
+package Perl::PrereqScanner::Scanner::POE;
 {
-  $Perl::PrereqScanner::Scanner::Aliased::VERSION = '1.006';
+  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.006';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
-# ABSTRACT: scan for OO module aliases via aliased.pm
+# ABSTRACT: scan for POE components
 
 
 sub scan_for_prereqs {
@@ -16,16 +16,14 @@ sub scan_for_prereqs {
   # regular use and require
   my $includes = $ppi_doc->find('Statement::Include') || [];
   for my $node ( @$includes ) {
-    # aliasing
-    if (grep { $_ eq $node->module } qw{ aliased }) {
-      # We only want the first argument to aliased
-      my @args = grep {
+    if ( $node->module eq 'POE' ) {
+      my @meat = grep {
            $_->isa('PPI::Token::QuoteLike::Words')
         || $_->isa('PPI::Token::Quote')
-        } $node->arguments;
+      } $node->arguments;
 
-      my ($module) = $self->_q_contents($args[0]);
-      $req->add_minimum($module => 0);
+      my @components = map { $self->_q_contents($_) } @meat;
+      $req->add_minimum("POE::$_" => 0) for @components;
     }
   }
 }
@@ -37,7 +35,7 @@ __END__
 
 =head1 NAME
 
-Perl::PrereqScanner::Scanner::Aliased - scan for OO module aliases via aliased.pm
+Perl::PrereqScanner::Scanner::POE - scan for POE components
 
 =head1 VERSION
 
@@ -45,12 +43,9 @@ version 1.006
 
 =head1 DESCRIPTION
 
-This scanner will look for aliased OO modules:
+This scanner will look for POE modules included with C<use POE>
 
-  use aliased 'Some::Long::Long::Name' => 'Short::Name';
-
-  Short::Name->new;
-  ...
+  use POE wq(Component::IRC);
 
 =head1 AUTHORS
 
