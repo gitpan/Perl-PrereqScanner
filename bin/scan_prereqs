@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 {
-  $Perl::PrereqScanner::App::VERSION = '1.008';
+  $Perl::PrereqScanner::App::VERSION = '1.009';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -14,7 +14,7 @@ use lib catdir( $Bin, updir, 'lib' );
 
 use List::Util qw{ max };
 use Perl::PrereqScanner;
-use Version::Requirements ();
+use CPAN::Meta::Requirements ();
 
 use Getopt::Long qw{ GetOptions };
 my %options;
@@ -22,7 +22,7 @@ GetOptions(
   \%options,
   'combine!',
 );
-my $combined = $options{combine} && Version::Requirements->new;
+my $combined = $options{combine} && CPAN::Meta::Requirements->new;
 
 foreach my $file ( @ARGV ) {
     my $prereqs = Perl::PrereqScanner->new->scan_file($file);
@@ -57,7 +57,7 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.008
+version 1.009
 
 =head1 AUTHORS
 

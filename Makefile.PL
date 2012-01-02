@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Perl::PrereqScanner",
   "PREREQ_PM" => {
+    "CPAN::Meta::Requirements" => 0,
     "File::Spec::Functions" => 0,
     "FindBin" => 0,
     "Getopt::Long" => 0,
@@ -37,12 +38,11 @@ my %WriteMakefileArgs = (
     "PPI" => "1.205",
     "Params::Util" => 0,
     "String::RewritePrefix" => "0.005",
-    "Version::Requirements" => "0.100630",
     "namespace::autoclean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.008",
+  "VERSION" => "1.009",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.008';
+  $Perl::PrereqScanner::VERSION = '1.009';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -18,7 +18,7 @@ use String::RewritePrefix 0.005 rewrite => {
   prefixes => { '' => 'Perl::PrereqScanner::Scanner::', '=' => '' },
 };
 
-use Version::Requirements 0.100630; # merge with 0-min bug fixed
+use CPAN::Meta::Requirements;
 
 use namespace::autoclean;
 
@@ -78,7 +78,7 @@ sub scan_file {
 sub scan_ppi_document {
   my ($self, $ppi_doc) = @_;
 
-  my $req = Version::Requirements->new;
+  my $req = CPAN::Meta::Requirements->new;
 
   for my $scanner (@{ $self->{scanners} }) {
     $scanner->scan_for_prereqs($ppi_doc, $req);
@@ -98,7 +98,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.008
+version 1.009
 
 =head1 SYNOPSIS
 
@@ -160,7 +160,7 @@ constructing your PrereqScanner:
   my $prereqs = $scanner->scan_string( $perl_code );
 
 Given a string containing Perl source code, this method returns a
-Version::Requirements object describing the modules it requires.
+CPAN::Meta::Requirements object describing the modules it requires.
 
 This method will throw an exception if PPI fails to parse the code.
 
@@ -169,7 +169,7 @@ This method will throw an exception if PPI fails to parse the code.
   my $prereqs = $scanner->scan_file( $path );
 
 Given a file path to a Perl document, this method returns a
-Version::Requirements object describing the modules it requires.
+CPAN::Meta::Requirements object describing the modules it requires.
 
 This method will throw an exception if PPI fails to parse the code.
 
@@ -177,7 +177,7 @@ This method will throw an exception if PPI fails to parse the code.
 
   my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
 
-Given a L<PPI::Document>, this method returns a Version::Requirements object
+Given a L<PPI::Document>, this method returns a CPAN::Meta::Requirements object
 describing the modules it requires.
 
 =for Pod::Coverage::TrustPod new
