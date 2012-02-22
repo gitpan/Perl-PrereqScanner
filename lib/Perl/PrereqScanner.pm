@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.009';
+  $Perl::PrereqScanner::VERSION = '1.010';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -98,7 +98,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.009
+version 1.010
 
 =head1 SYNOPSIS
 
@@ -148,10 +148,10 @@ representing the code to scan.  By default the "Perl5", "Moose", "TestMore",
 constructing your PrereqScanner:
 
   # Us only the Perl5 scanner:
-  my $scanner = Perl::PrereqScanner->new({ plugins => [ qw(Perl5) ] });
+  my $scanner = Perl::PrereqScanner->new({ scanners => [ qw(Perl5) ] });
 
-  # Use any stock plugins, plus Example:
-  my $scanner = Perl::PrereqScanner->new({ extra_plugins => [ qw(Example) ] });
+  # Use any stock scanners, plus Example:
+  my $scanner = Perl::PrereqScanner->new({ extra_scanners => [ qw(Example) ] });
 
 =head1 METHODS
 
