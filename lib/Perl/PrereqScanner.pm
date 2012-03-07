@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.010';
+  $Perl::PrereqScanner::VERSION = '1.011';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -18,7 +18,7 @@ use String::RewritePrefix 0.005 rewrite => {
   prefixes => { '' => 'Perl::PrereqScanner::Scanner::', '=' => '' },
 };
 
-use CPAN::Meta::Requirements;
+use CPAN::Meta::Requirements 2.120630; # normalized v-strings
 
 use namespace::autoclean;
 
@@ -98,7 +98,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.010
+version 1.011
 
 =head1 SYNOPSIS
 

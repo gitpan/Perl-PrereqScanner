@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Perl5;
 {
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.010';
+  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.011';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -102,7 +102,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 1.010
+version 1.011
 
 =head1 DESCRIPTION
 

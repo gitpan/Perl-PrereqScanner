@@ -1,23 +1,6 @@
 Revision history for Perl-PrereqScanner
 
-1.011     2012-03-07 13:08:49 Europe/Paris
-  - require CPAN::Meta::Requirements 2.120630 and fix tests to reflect
-    its v-string normalizing behavior
-
-1.010     2012-02-22 10:07:46 America/New_York
-  - fix documentation bug (thanks to Marius Olsthoorn for the report)
-
-  - add a test case to prove someone wrong on the internet
-
-1.009     2012-01-01 23:11:51 America/New_York
- - switch from Version::Requirements to CPAN::Meta::Requirements
-
-1.008     2011-11-01 10:35:46 Europe/Paris
- - fix rt#72062 - look for "require Module; Module->VERSION(min);"
-   (Christopher J. Madsen)
-
-1.007     2011-08-31 09:22:12 Europe/Paris
- - new option --combine for scan_prereqs script (randy stauner)
+{{$NEXT}}
 
 1.006     2011-08-20 14:03:24 Europe/Paris
   - add the POE scanner for POE components (David Golden)
