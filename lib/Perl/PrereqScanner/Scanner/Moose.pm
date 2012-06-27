@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Moose;
 {
-  $Perl::PrereqScanner::Scanner::Moose::VERSION = '1.011';
+  $Perl::PrereqScanner::Scanner::Moose::VERSION = '1.012';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -26,7 +26,7 @@ sub scan_for_prereqs {
     #       PPI::Token::Quote::Single
     #   PPI::Token::Structure
 
-    map  { [ $_->children ] }
+    map  { [ $_->schildren ] }
     grep { $_->child(0)->literal =~ m{\A(?:with|extends)\z} }
     grep { $_->child(0)->isa('PPI::Token::Word') }
     @{ $ppi_doc->find('PPI::Statement') || [] };
@@ -124,7 +124,7 @@ Perl::PrereqScanner::Scanner::Moose - scan for Moose sugar indicators of require
 
 =head1 VERSION
 
-version 1.011
+version 1.012
 
 =head1 DESCRIPTION
 

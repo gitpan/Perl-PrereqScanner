@@ -1,5 +1,4 @@
 Changes
-Changes~
 LICENSE
 MANIFEST
 META.json
@@ -18,5 +17,5 @@ lib/Perl/PrereqScanner/Scanner/POE.pm
 lib/Perl/PrereqScanner/Scanner/Perl5.pm
 lib/Perl/PrereqScanner/Scanner/TestMore.pm
 t/autoprereq.t
-t/release-pod-syntax.t
 t/scan_prereqs.t
+xt/release/pod-syntax.t
