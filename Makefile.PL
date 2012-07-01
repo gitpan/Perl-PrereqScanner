@@ -28,6 +28,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Perl::PrereqScanner",
   "PREREQ_PM" => {
     "CPAN::Meta::Requirements" => "2.120630",
+    "File::Find" => 0,
     "File::Spec::Functions" => 0,
     "FindBin" => 0,
     "Getopt::Long" => 0,
@@ -42,7 +43,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.012",
+  "VERSION" => "1.013",
   "test" => {
     "TESTS" => "t/*.t"
   }

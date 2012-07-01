@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.012';
+  $Perl::PrereqScanner::VERSION = '1.013';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -58,7 +58,7 @@ sub BUILD {
 sub scan_string {
   my ($self, $str) = @_;
   my $ppi = PPI::Document->new( \$str );
-  confess "PPI parse failed" unless defined $ppi;
+  confess "PPI parse failed: " . PPI::Document->errstr unless defined $ppi;
 
   return $self->scan_ppi_document( $ppi );
 }
@@ -68,7 +68,8 @@ sub scan_string {
 sub scan_file {
   my ($self, $path) = @_;
   my $ppi = PPI::Document->new( $path );
-  confess "PPI failed to parse '$path'" unless defined $ppi;
+  confess "PPI failed to parse '$path': " . PPI::Document->errstr
+      unless defined $ppi;
 
   return $self->scan_ppi_document( $ppi );
 }
@@ -98,7 +99,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.012
+version 1.013
 
 =head1 SYNOPSIS
 

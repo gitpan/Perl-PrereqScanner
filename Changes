@@ -1,5 +1,11 @@
 Revision history for Perl-PrereqScanner
 
+1.013     2012-07-01 17:21:25 America/New_York
+ - make scan_prereqs scan directories recursively (thanks, Jakob Voss)
+
+ - if PPI parsing fails, include PPI::Document->errstr in error message
+   (Christopher J. Madsen)
+
 1.012     2012-06-27 16:17:28 America/New_York
   - fix "with (...)" where spaces occur between with and parenthesized list
     (thanks to celogeek for the failing test)

@@ -23,6 +23,7 @@
       "runtime" : {
          "requires" : {
             "CPAN::Meta::Requirements" : "2.120630",
+            "File::Find" : "0",
             "File::Spec::Functions" : "0",
             "FindBin" : "0",
             "Getopt::Long" : "0",
@@ -58,7 +59,7 @@
       },
       "x_MailingList" : "http://www.listbox.com/subscribe/?list_id=139292"
    },
-   "version" : "1.012",
+   "version" : "1.013",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
