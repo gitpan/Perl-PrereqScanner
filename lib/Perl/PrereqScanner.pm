@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.013';
+  $Perl::PrereqScanner::VERSION = '1.014';
 }
 use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
@@ -12,7 +12,7 @@ use Moose;
 use List::Util qw(max);
 use Params::Util qw(_CLASS);
 use Perl::PrereqScanner::Scanner;
-use PPI 1.205; # module_version
+use PPI 1.215; # module_version, bug fixes
 use String::RewritePrefix 0.005 rewrite => {
   -as => '__rewrite_scanner',
   prefixes => { '' => 'Perl::PrereqScanner::Scanner::', '=' => '' },
@@ -99,7 +99,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.013
+version 1.014
 
 =head1 SYNOPSIS
 

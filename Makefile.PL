@@ -36,14 +36,14 @@ my %WriteMakefileArgs = (
     "List::Util" => 0,
     "Moose" => 0,
     "Moose::Role" => 0,
-    "PPI" => "1.205",
+    "PPI" => "1.215",
     "Params::Util" => 0,
     "String::RewritePrefix" => "0.005",
     "namespace::autoclean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.013",
+  "VERSION" => "1.014",
   "test" => {
     "TESTS" => "t/*.t"
   }

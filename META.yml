@@ -27,7 +27,7 @@ requires:
   List::Util: 0
   Moose: 0
   Moose::Role: 0
-  PPI: 1.205
+  PPI: 1.215
   Params::Util: 0
   String::RewritePrefix: 0.005
   namespace::autoclean: 0
@@ -38,7 +38,7 @@ resources:
   homepage: https://github.com/rjbs/perl-prereqscanner
   repository: https://github.com/rjbs/perl-prereqscanner.git
   x_MailingList: http://www.listbox.com/subscribe/?list_id=139292
-version: 1.013
+version: 1.014
 x_Dist_Zilla:
   plugins:
     -
@@ -48,7 +48,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::GatherDir
       name: '@RJBS/Git::GatherDir'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::CheckPrereqsIndexed
       name: '@RJBS/CheckPrereqsIndexed'
@@ -112,7 +112,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RJBS/Git::NextVersion'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@RJBS/PkgVersion'
@@ -130,9 +130,21 @@ x_Dist_Zilla:
       name: '@RJBS/NextRelease'
       version: 4.300020
     -
+      class: Dist::Zilla::Plugin::Test::ChangesHasContent
+      name: '@RJBS/Test::ChangesHasContent'
+      version: 0.005
+    -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@RJBS/PodSyntaxTests'
       version: 4.300020
+    -
+      class: Dist::Zilla::Plugin::Test::Compile
+      name: '@RJBS/Test::Compile'
+      version: 1.112820
+    -
+      class: Dist::Zilla::Plugin::ReportVersions::Tiny
+      name: '@RJBS/ReportVersions::Tiny'
+      version: 1.05
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -152,19 +164,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@RJBS/@Git/Check'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@RJBS/@Git/Commit'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@RJBS/@Git/Tag'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@RJBS/@Git/Push'
-      version: 1.121010
+      version: 1.121820
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'

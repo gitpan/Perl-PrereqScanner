@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 {
-  $Perl::PrereqScanner::App::VERSION = '1.013';
+  $Perl::PrereqScanner::App::VERSION = '1.014';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -71,7 +71,7 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.013
+version 1.014
 
 =head1 SYNOPSIS
 
