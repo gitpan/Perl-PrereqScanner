@@ -4,7 +4,8 @@ use Test::More tests => 2;
 
 note 'Checking Changes';
 my $changes_file = 'Changes';
-my $newver = '1.014';
+my $newver = '1.015';
+my $trial_token = '-TRIAL';
 
 SKIP: {
     ok(-e $changes_file, "$changes_file file exists")
@@ -27,7 +28,7 @@ sub _get_changes
     close $fh;
 
     my @content =
-        grep { /^$newver(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
+        grep { /^$newver(?:$trial_token)?(?:\s+|$)/ ... /^\S/ } # from newver to un-indented
         split /\n/, $changelog;
     shift @content; # drop the version line
 

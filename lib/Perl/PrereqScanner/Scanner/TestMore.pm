@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
 {
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.014';
+  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.015';
 }
 # ABSTRACT: scanner to find recent Test::More usage
 
@@ -26,7 +26,7 @@ sub scan_for_prereqs {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -36,7 +36,7 @@ Perl::PrereqScanner::Scanner::TestMore - scanner to find recent Test::More usage
 
 =head1 VERSION
 
-version 1.014
+version 1.015
 
 =head1 DESCRIPTION
 
@@ -66,7 +66,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

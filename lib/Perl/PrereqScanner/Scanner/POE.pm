@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::POE;
 {
-  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.014';
+  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.015';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -31,6 +31,7 @@ sub scan_for_prereqs {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -39,7 +40,7 @@ Perl::PrereqScanner::Scanner::POE - scan for POE components
 
 =head1 VERSION
 
-version 1.014
+version 1.015
 
 =head1 DESCRIPTION
 
@@ -69,4 +70,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

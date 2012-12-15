@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 {
-  $Perl::PrereqScanner::App::VERSION = '1.014';
+  $Perl::PrereqScanner::App::VERSION = '1.015';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -61,8 +61,8 @@ sub print_prereqs {
 
 exit;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -71,7 +71,7 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.014
+version 1.015
 
 =head1 SYNOPSIS
 
@@ -103,4 +103,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

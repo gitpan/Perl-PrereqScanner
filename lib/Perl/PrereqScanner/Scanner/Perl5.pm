@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Perl5;
 {
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.014';
+  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.015';
 }
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
@@ -13,7 +13,7 @@ with 'Perl::PrereqScanner::Scanner';
 sub scan_for_prereqs {
   my ($self, $ppi_doc, $req) = @_;
 
-  # regular use and require
+  # regular use, require, and no
   my $includes = $ppi_doc->find('Statement::Include') || [];
   for my $node ( @$includes ) {
     # minimum perl version
@@ -94,6 +94,7 @@ sub _check_required_version {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -102,7 +103,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 1.014
+version 1.015
 
 =head1 DESCRIPTION
 
@@ -112,7 +113,7 @@ This scanner will look for the following indicators:
 
 =item *
 
-plain lines beginning with C<use> or C<require> in your perl modules and scripts, including minimum perl version
+plain lines beginning with C<use>, C<require>, or C<no> in your perl modules and scripts, including minimum perl version
 
 =item *
 
@@ -165,4 +166,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
