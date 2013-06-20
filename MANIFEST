@@ -5,6 +5,7 @@ META.json
 META.yml
 Makefile.PL
 README
+bin/scan-perl-prereqs
 bin/scan_prereqs
 corpus/scan/bar.pl
 corpus/scan/foo.pl
@@ -15,10 +16,12 @@ lib/Perl/PrereqScanner/Scanner/Aliased.pm
 lib/Perl/PrereqScanner/Scanner/Moose.pm
 lib/Perl/PrereqScanner/Scanner/POE.pm
 lib/Perl/PrereqScanner/Scanner/Perl5.pm
+lib/Perl/PrereqScanner/Scanner/Superclass.pm
 lib/Perl/PrereqScanner/Scanner/TestMore.pm
 t/00-compile.t
 t/000-report-versions-tiny.t
 t/autoprereq.t
+t/scan-module.t
 t/scan_prereqs.t
 xt/release/changes_has_content.t
 xt/release/pod-syntax.t

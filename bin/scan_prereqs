@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 {
-  $Perl::PrereqScanner::App::VERSION = '1.015';
+  $Perl::PrereqScanner::App::VERSION = '1.016';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -32,7 +32,7 @@ foreach my $file ( @ARGV ? @ARGV : '.' ) {
 sub scan_dir {
     find( {
         no_chdir => 1, 
-        wanted => sub { scan_file($_) if /\.(pl|pm|psgi)$/; }
+        wanted => sub { scan_file($_) if /\.(pl|pm|psgi|t)$/; }
     }, shift );
 }
 
@@ -71,15 +71,15 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.015
+version 1.016
 
 =head1 SYNOPSIS
 
-    scan_prerequs [--combine] [FILES]
+    scan_prereqs [--combine] [DIRS|FILES]
 
-Directories are traversed with L<File::Find> to collect all C<.pl>, C<.pm>, and
-C<.psgi> files. If no files are specified, the current working directory is
-scanned.
+Directories are traversed with L<File::Find> to collect all C<.pl>, C<.pm>,
+C<.psgi> and C<.t> files. If no directories or files are specified, the current
+working directory is scanned.
 
 =head1 AUTHORS
 

@@ -11,17 +11,13 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "a tool to scan your Perl code for its prerequisites",
   "AUTHOR" => "Jerome Quelin, Ricardo Signes <rjbs\@cpan.org>",
-  "BUILD_REQUIRES" => {
-    "File::Temp" => 0,
-    "PPI::Document" => 0,
-    "Test::More" => "0.96",
-    "Try::Tiny" => 0
-  },
+  "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
   "DISTNAME" => "Perl-PrereqScanner",
   "EXE_FILES" => [
+    "bin/scan-perl-prereqs",
     "bin/scan_prereqs"
   ],
   "LICENSE" => "perl",
@@ -32,23 +28,46 @@ my %WriteMakefileArgs = (
     "File::Spec::Functions" => 0,
     "FindBin" => 0,
     "Getopt::Long" => 0,
+    "Getopt::Long::Descriptive" => 0,
     "List::MoreUtils" => 0,
     "List::Util" => 0,
+    "Module::Path" => 0,
     "Moose" => 0,
     "Moose::Role" => 0,
     "PPI" => "1.215",
     "Params::Util" => 0,
+    "Scalar::Util" => 0,
     "String::RewritePrefix" => "0.005",
+    "lib" => 0,
     "namespace::autoclean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.015",
+  "TEST_REQUIRES" => {
+    "File::Temp" => 0,
+    "PPI::Document" => 0,
+    "Test::More" => "0.96",
+    "Try::Tiny" => 0
+  },
+  "VERSION" => "1.016",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};

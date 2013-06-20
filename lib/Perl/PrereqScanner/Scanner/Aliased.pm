@@ -3,11 +3,12 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Aliased;
 {
-  $Perl::PrereqScanner::Scanner::Aliased::VERSION = '1.015';
+  $Perl::PrereqScanner::Scanner::Aliased::VERSION = '1.016';
 }
+# ABSTRACT: scan for OO module aliases via aliased.pm
+
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
-# ABSTRACT: scan for OO module aliases via aliased.pm
 
 
 sub scan_for_prereqs {
@@ -42,7 +43,7 @@ Perl::PrereqScanner::Scanner::Aliased - scan for OO module aliases via aliased.p
 
 =head1 VERSION
 
-version 1.015
+version 1.016
 
 =head1 DESCRIPTION
 

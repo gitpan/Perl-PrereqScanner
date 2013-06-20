@@ -4,10 +4,11 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.015';
+  $Perl::PrereqScanner::VERSION = '1.016';
 }
-use Moose;
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
+
+use Moose;
 
 use List::Util qw(max);
 use Params::Util qw(_CLASS);
@@ -46,7 +47,7 @@ sub __prepare_scanners {
 sub BUILD {
   my ($self, $arg) = @_;
 
-  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 TestMore Moose Aliased POE) ] };
+  my @scanners = @{ $arg->{scanners} || [ qw(Perl5 Superclass TestMore Moose Aliased POE) ] };
   my @extra_scanners = @{ $arg->{extra_scanners} || [] };
 
   my $scanners = $self->__prepare_scanners([ @scanners, @extra_scanners ]);
@@ -64,7 +65,6 @@ sub scan_string {
 }
 
 
-
 sub scan_file {
   my ($self, $path) = @_;
   my $ppi = PPI::Document->new( $path );
@@ -73,7 +73,6 @@ sub scan_file {
 
   return $self->scan_ppi_document( $ppi );
 }
-
 
 
 sub scan_ppi_document {
@@ -88,6 +87,18 @@ sub scan_ppi_document {
   return $req;
 }
 
+
+sub scan_module {
+  my ($self, $module_name) = @_;
+
+  require Module::Path;
+  if (defined(my $path = Module::Path::module_path($module_name))) {
+    return $self->scan_file($path);
+  }
+
+  confess "Failed to find file for module '$module_name'";
+}
+
 1;
 
 __END__
@@ -100,7 +111,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.015
+version 1.016
 
 =head1 SYNOPSIS
 
@@ -109,6 +120,7 @@ version 1.015
   my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
   my $prereqs = $scanner->scan_file( $file_path );
   my $prereqs = $scanner->scan_string( $perl_code );
+  my $prereqs = $scanner->scan_module( $module_name );
 
 =head1 DESCRIPTION
 
@@ -180,6 +192,14 @@ This method will throw an exception if PPI fails to parse the code.
   my $prereqs = $scanner->scan_ppi_document( $ppi_doc );
 
 Given a L<PPI::Document>, this method returns a CPAN::Meta::Requirements object
+describing the modules it requires.
+
+=head2 scan_module
+
+  my $prereqs = $scanner->scan_module( $module_name );
+
+Given the name of a module, eg C<'PPI::Document'>,
+this method returns a CPAN::Meta::Requirements object
 describing the modules it requires.
 
 =for Pod::Coverage::TrustPod new
