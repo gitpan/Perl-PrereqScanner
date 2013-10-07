@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner;
 {
-  $Perl::PrereqScanner::Scanner::VERSION = '1.016';
+  $Perl::PrereqScanner::Scanner::VERSION = '1.017';
 }
 # ABSTRACT: something that scans for prereqs in a Perl document
 
@@ -39,7 +39,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 1.016
+version 1.017
 
 =head1 DESCRIPTION
 

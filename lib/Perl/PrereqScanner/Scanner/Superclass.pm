@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Superclass;
 {
-  $Perl::PrereqScanner::Scanner::Superclass::VERSION = '1.016';
+  $Perl::PrereqScanner::Scanner::Superclass::VERSION = '1.017';
 }
 # ABSTRACT: scan for modules loaded with superclass.pm
 
@@ -51,7 +51,7 @@ Perl::PrereqScanner::Scanner::Superclass - scan for modules loaded with supercla
 
 =head1 VERSION
 
-version 1.016
+version 1.017
 
 =head1 DESCRIPTION
 

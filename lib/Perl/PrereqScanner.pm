@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.016';
+  $Perl::PrereqScanner::VERSION = '1.017';
 }
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
@@ -111,7 +111,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.016
+version 1.017
 
 =head1 SYNOPSIS
 

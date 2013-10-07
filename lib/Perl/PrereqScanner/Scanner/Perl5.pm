@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Perl5;
 {
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.016';
+  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.017';
 }
 # ABSTRACT: scan for core Perl 5 language indicators of required modules
 
@@ -98,7 +98,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 1.016
+version 1.017
 
 =head1 DESCRIPTION
 
