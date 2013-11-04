@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 package Perl::PrereqScanner::App;
 {
-  $Perl::PrereqScanner::App::VERSION = '1.017';
+  $Perl::PrereqScanner::App::VERSION = '1.018';
 }
 # ABSTRACT: scan your working dir for likely prereqs
 
@@ -43,7 +43,7 @@ my %result;
 sub scan_dir {
     find( {
         no_chdir => 1,
-        wanted => sub { scan_file($_) if /\.(pl|pm|psgi|t)$/; }
+        wanted => sub { scan_file($_) if /\.(pl|PL|pm|cgi|psgi|t)$/; }
     }, shift );
 }
 
@@ -94,7 +94,7 @@ Perl::PrereqScanner::App - scan your working dir for likely prereqs
 
 =head1 VERSION
 
-version 1.017
+version 1.018
 
 =head1 SYNOPSIS
 

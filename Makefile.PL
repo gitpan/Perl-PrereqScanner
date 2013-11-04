@@ -44,45 +44,49 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "File::Spec" => 0,
     "File::Temp" => 0,
-    "IO::Handle" => 0,
-    "IPC::Open3" => 0,
     "PPI::Document" => 0,
     "Test::More" => "0.96",
     "Try::Tiny" => 0
   },
-  "VERSION" => "1.017",
+  "VERSION" => "1.018",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
 
-unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
-  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
-  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
-  for my $mod ( keys %$tr ) {
-    if ( exists $br->{$mod} ) {
-      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
-    }
-    else {
-      $br->{$mod} = $tr->{$mod};
-    }
-  }
-}
+my %FallbackPrereqs = (
+  "CPAN::Meta::Requirements" => "2.120630",
+  "File::Find" => 0,
+  "File::Spec::Functions" => 0,
+  "File::Temp" => 0,
+  "FindBin" => 0,
+  "Getopt::Long" => 0,
+  "Getopt::Long::Descriptive" => 0,
+  "List::MoreUtils" => 0,
+  "List::Util" => 0,
+  "Module::Path" => 0,
+  "Moose" => 0,
+  "Moose::Role" => 0,
+  "PPI" => "1.215",
+  "PPI::Document" => 0,
+  "Params::Util" => 0,
+  "Scalar::Util" => 0,
+  "String::RewritePrefix" => "0.005",
+  "Test::More" => "0.96",
+  "Try::Tiny" => 0,
+  "lib" => 0,
+  "namespace::autoclean" => 0,
+  "strict" => 0,
+  "warnings" => 0
+);
 
-unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
-  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
-  my $pp = $WriteMakefileArgs{PREREQ_PM};
-  for my $mod ( keys %$br ) {
-    if ( exists $pp->{$mod} ) {
-      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
-    }
-    else {
-      $pp->{$mod} = $br->{$mod};
-    }
-  }
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  delete $WriteMakefileArgs{TEST_REQUIRES};
+  delete $WriteMakefileArgs{BUILD_REQUIRES};
+  $WriteMakefileArgs{PREREQ_PM} = \%FallbackPrereqs;
 }
 
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}

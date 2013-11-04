@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::Perl5;
 {
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.017';
+  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.018';
 }
 # ABSTRACT: scan for core Perl 5 language indicators of required modules
 
@@ -43,7 +43,7 @@ sub scan_for_prereqs {
 
     # See if the next statement after require is Module->VERSION(min):
     $version = $self->_check_required_version($node) || 0
-        if not $version and $node->type eq 'require';
+        if not $version and $node->type =~ /\A(?:require|use)\z/;
 
     $req->add_minimum($node->module, $version);
   }
@@ -98,7 +98,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 1.017
+version 1.018
 
 =head1 DESCRIPTION
 

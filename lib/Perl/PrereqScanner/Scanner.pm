@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner;
 {
-  $Perl::PrereqScanner::Scanner::VERSION = '1.017';
+  $Perl::PrereqScanner::Scanner::VERSION = '1.018';
 }
 # ABSTRACT: something that scans for prereqs in a Perl document
 
@@ -39,7 +39,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 1.017
+version 1.018
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,7 @@ like this:
 
   $scanner->scan_for_prereqs($ppi_doc, $version_requirements);
 
-The scanner should alter alter the L<CPAN::Meta::Requirements> object to reflect
+The scanner should alter the L<CPAN::Meta::Requirements> object to reflect
 its findings about the PPI document.
 
 =head1 AUTHORS

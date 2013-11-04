@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.017';
+  $Perl::PrereqScanner::VERSION = '1.018';
 }
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
@@ -91,6 +91,7 @@ sub scan_ppi_document {
 sub scan_module {
   my ($self, $module_name) = @_;
 
+  # consider rewriting to use Module::Which -- rjbs, 2013-11-03
   require Module::Path;
   if (defined(my $path = Module::Path::module_path($module_name))) {
     return $self->scan_file($path);
@@ -111,7 +112,7 @@ Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.017
+version 1.018
 
 =head1 SYNOPSIS
 
@@ -203,6 +204,10 @@ this method returns a CPAN::Meta::Requirements object
 describing the modules it requires.
 
 =for Pod::Coverage::TrustPod new
+
+=head1 SEE ALSO
+
+L<scan-perl-prereqs>, in this distribution, is a command-line interface to the scanner
 
 =head1 AUTHORS
 

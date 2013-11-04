@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner::POE;
 {
-  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.017';
+  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.018';
 }
 # ABSTRACT: scan for POE components
 
@@ -41,7 +41,7 @@ Perl::PrereqScanner::Scanner::POE - scan for POE components
 
 =head1 VERSION
 
-version 1.017
+version 1.018
 
 =head1 DESCRIPTION
 
