@@ -3,7 +3,7 @@ use warnings;
 
 package Perl::PrereqScanner::Scanner;
 {
-  $Perl::PrereqScanner::Scanner::VERSION = '1.018';
+  $Perl::PrereqScanner::Scanner::VERSION = '1.019';
 }
 # ABSTRACT: something that scans for prereqs in a Perl document
 
@@ -33,13 +33,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl document
 
 =head1 VERSION
 
-version 1.018
+version 1.019
 
 =head1 DESCRIPTION
 

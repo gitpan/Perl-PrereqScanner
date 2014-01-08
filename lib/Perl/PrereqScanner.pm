@@ -4,7 +4,7 @@ use warnings;
 
 package Perl::PrereqScanner;
 {
-  $Perl::PrereqScanner::VERSION = '1.018';
+  $Perl::PrereqScanner::VERSION = '1.019';
 }
 # ABSTRACT: a tool to scan your Perl code for its prerequisites
 
@@ -106,13 +106,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Perl::PrereqScanner - a tool to scan your Perl code for its prerequisites
 
 =head1 VERSION
 
-version 1.018
+version 1.019
 
 =head1 SYNOPSIS
 
@@ -178,6 +180,10 @@ Given a string containing Perl source code, this method returns a
 CPAN::Meta::Requirements object describing the modules it requires.
 
 This method will throw an exception if PPI fails to parse the code.
+
+B<Warning!>  It isn't entirely clear whether PPI prefers to receive
+strings as octet strings or character strings.  For now, my advice
+is to pass octet strings.
 
 =head2 scan_file
 
