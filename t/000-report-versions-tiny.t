@@ -48,7 +48,7 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('CPAN::Meta::Requirements','2.120630') };
+eval { $v .= pmver('CPAN::Meta::Requirements','2.124') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Find','any version') };
 eval { $v .= pmver('File::Spec::Functions','any version') };

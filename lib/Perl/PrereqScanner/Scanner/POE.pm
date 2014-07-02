@@ -2,14 +2,18 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::POE;
-{
-  $Perl::PrereqScanner::Scanner::POE::VERSION = '1.019';
-}
 # ABSTRACT: scan for POE components
-
+$Perl::PrereqScanner::Scanner::POE::VERSION = '1.020';
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will look for POE modules included with C<use POE>
+#pod
+#pod   use POE wq(Component::IRC);
+#pod
+#pod =cut
 
 sub scan_for_prereqs {
   my ($self, $ppi_doc, $req) = @_;
@@ -43,7 +47,7 @@ Perl::PrereqScanner::Scanner::POE - scan for POE components
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 

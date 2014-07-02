@@ -2,14 +2,18 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::Superclass;
-{
-  $Perl::PrereqScanner::Scanner::Superclass::VERSION = '1.019';
-}
 # ABSTRACT: scan for modules loaded with superclass.pm
-
+$Perl::PrereqScanner::Scanner::Superclass::VERSION = '1.020';
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will look for dependencies from the L<superclass> module:
+#pod
+#pod     use superclass 'Foo', Bar => 1.23;
+#pod
+#pod =cut
 
 my $mod_re = qr/^[A-Z_a-z][0-9A-Z_a-z]*(?:(?:::|')[0-9A-Z_a-z]+)*$/;
 
@@ -53,7 +57,7 @@ Perl::PrereqScanner::Scanner::Superclass - scan for modules loaded with supercla
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 

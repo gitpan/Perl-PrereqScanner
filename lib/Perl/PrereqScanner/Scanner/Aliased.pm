@@ -2,14 +2,21 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::Aliased;
-{
-  $Perl::PrereqScanner::Scanner::Aliased::VERSION = '1.019';
-}
 # ABSTRACT: scan for OO module aliases via aliased.pm
-
+$Perl::PrereqScanner::Scanner::Aliased::VERSION = '1.020';
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will look for aliased OO modules:
+#pod
+#pod   use aliased 'Some::Long::Long::Name' => 'Short::Name';
+#pod
+#pod   Short::Name->new;
+#pod   ...
+#pod
+#pod =cut
 
 sub scan_for_prereqs {
   my ($self, $ppi_doc, $req) = @_;
@@ -45,7 +52,7 @@ Perl::PrereqScanner::Scanner::Aliased - scan for OO module aliases via aliased.p
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 

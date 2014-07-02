@@ -2,14 +2,24 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::Moose;
-{
-  $Perl::PrereqScanner::Scanner::Moose::VERSION = '1.019';
-}
 # ABSTRACT: scan for Moose sugar indicators of required modules
-
+$Perl::PrereqScanner::Scanner::Moose::VERSION = '1.020';
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will look for the following indicators:
+#pod
+#pod =begin :list
+#pod
+#pod * L<Moose> inheritance declared with the C<extends> keyword
+#pod
+#pod * L<Moose> roles included with the C<with> keyword
+#pod
+#pod =end :list
+#pod
+#pod =cut
 
 sub scan_for_prereqs {
   my ($self, $ppi_doc, $req) = @_;
@@ -128,7 +138,7 @@ Perl::PrereqScanner::Scanner::Moose - scan for Moose sugar indicators of require
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 

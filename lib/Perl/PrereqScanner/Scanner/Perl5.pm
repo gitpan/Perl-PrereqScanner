@@ -2,14 +2,41 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::Perl5;
-{
-  $Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.019';
-}
 # ABSTRACT: scan for core Perl 5 language indicators of required modules
-
+$Perl::PrereqScanner::Scanner::Perl5::VERSION = '1.020';
 use Moose;
 with 'Perl::PrereqScanner::Scanner';
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will look for the following indicators:
+#pod
+#pod =begin :list
+#pod
+#pod * plain lines beginning with C<use>, C<require>, or C<no> in your perl modules and scripts, including minimum perl version
+#pod
+#pod * regular inheritance declared with the C<base> and C<parent> pragmata
+#pod
+#pod =end :list
+#pod
+#pod Since Perl does not allow you to supply a version requirement with a
+#pod C<require> statement, the scanner will check the statement after the
+#pod C<require Module> to see if it is C<< Module->VERSION( minimum_version ); >>.
+#pod
+#pod In order to provide a minimum version, that method call must meet the
+#pod following requirements:
+#pod
+#pod =begin :list
+#pod
+#pod * it must be the very next statement after C<require Module>.  Nothing can separate them but whitespace and comments (and one semicolon).
+#pod
+#pod * C<Module> must be a bareword, and match the C<require> exactly.
+#pod
+#pod * C<minimum_version> must be a literal number, v-string, or single-quoted string.  Double quotes are not allowed.
+#pod
+#pod =end :list
+#pod
+#pod =cut
 
 sub scan_for_prereqs {
   my ($self, $ppi_doc, $req) = @_;
@@ -100,7 +127,7 @@ Perl::PrereqScanner::Scanner::Perl5 - scan for core Perl 5 language indicators o
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 

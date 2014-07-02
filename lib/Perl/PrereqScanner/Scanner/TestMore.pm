@@ -2,11 +2,8 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner::TestMore;
-{
-  $Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.019';
-}
 # ABSTRACT: scanner to find recent Test::More usage
-
+$Perl::PrereqScanner::Scanner::TestMore::VERSION = '1.020';
 use Moose;
 use List::MoreUtils 'none';
 with 'Perl::PrereqScanner::Scanner';
@@ -26,8 +23,6 @@ sub scan_for_prereqs {
 
 1;
 
-__END__
-
 =pod
 
 =encoding UTF-8
@@ -38,7 +33,7 @@ Perl::PrereqScanner::Scanner::TestMore - scanner to find recent Test::More usage
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 
@@ -68,3 +63,12 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+__END__
+
+#pod =head1 DESCRIPTION
+#pod
+#pod This scanner will check if a given test is using recent functions from
+#pod L<Test::More>, and increase the minimum version for this module
+#pod accordingly.
+#pod

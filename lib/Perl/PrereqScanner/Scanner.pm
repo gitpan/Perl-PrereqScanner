@@ -2,13 +2,24 @@ use strict;
 use warnings;
 
 package Perl::PrereqScanner::Scanner;
-{
-  $Perl::PrereqScanner::Scanner::VERSION = '1.019';
-}
 # ABSTRACT: something that scans for prereqs in a Perl document
-
+$Perl::PrereqScanner::Scanner::VERSION = '1.020';
 use Moose::Role;
 
+#pod =head1 DESCRIPTION
+#pod
+#pod This is a role to be composed into classes that will act as scanners plugged
+#pod into a Perl::PrereqScanner object.
+#pod
+#pod These classes must provide a C<scan_for_prereqs> method, which will be called
+#pod like this:
+#pod
+#pod   $scanner->scan_for_prereqs($ppi_doc, $version_requirements);
+#pod
+#pod The scanner should alter the L<CPAN::Meta::Requirements> object to reflect
+#pod its findings about the PPI document.
+#pod
+#pod =cut
 
 requires 'scan_for_prereqs';
 
@@ -41,7 +52,7 @@ Perl::PrereqScanner::Scanner - something that scans for prereqs in a Perl docume
 
 =head1 VERSION
 
-version 1.019
+version 1.020
 
 =head1 DESCRIPTION
 
